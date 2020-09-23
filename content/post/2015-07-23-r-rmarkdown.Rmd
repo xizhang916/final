@@ -90,7 +90,9 @@ Remark:In graph two,the information on X-axis is blurred.Hence, I want to give a
 7.Completed technical, community college, CEGEP, College Classique	
 8.Some university	
 9.Bachelor's degree	
+
 10.Master's degree
+
 11.Profession/doctorate degree
 
 
