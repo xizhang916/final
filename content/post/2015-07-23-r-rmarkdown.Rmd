@@ -60,7 +60,7 @@ Specification:Since the participants are sorted into groups by the highest educa
 
 # Graphs
 
-```{r echo=FALSE}
+```{r echo=FALSE,warning=FALSE}
 ces2019_web %>%
   ggplot(aes(x=cps19_interest_elxn_1))+
   geom_histogram(bins = 20)+
@@ -69,7 +69,7 @@ labs(x="interest level",
        title="Distribution of interest level in 2019 CES(Gragh 1)",
        caption="Source:http://www.ces-eec.ca")
 ```
-```{r echo=FALSE}
+```{r echo=FALSE,warning=FALSE}
 ces2019_web %>%
   ggplot(aes(x=cps19_education,y=cps19_interest_elxn_1))+
   geom_boxplot()+
@@ -80,6 +80,7 @@ labs(x="Education level",
 ```
 
 Remark:In graph two,the information on X-axis is blurred.Hence, I want to give a specification to make things easier.On X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is:
+
 1.No schooling	
 2.Some elementary school	
 3.Completed elementary school	
