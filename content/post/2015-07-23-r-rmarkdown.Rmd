@@ -6,9 +6,8 @@ categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
-knitr::opts_chunk$set(echo = TRUE)
+```{r  include=FALSE}
+
 install.packages("tidyverse")
 library(tidyverse)
 install.packages("dplyr")
@@ -34,8 +33,7 @@ The dataset used in this paper is called CES2019-WEB.It is extracted from the 20
 
 This dataset records participants' responses to a non-probability survey conducted for 2019 federal election.To be more detailed,the data within the set demonstrates the participants' personal information(gender,citizenship and education level,etc.),and their attitudes toward the election-related issues(parties of popular competitors and the new political policies regarding the election)
 
-```{r setup, include=FALSE,message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r include=FALSE}
 install.packages("devtools")
 devtools::install_github("hodgettsp/cesR")
 library(cesR)
@@ -70,8 +68,7 @@ Profession/doctorate degree
 
 #Graph
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
 ces2019_web %>%
   ggplot(aes(x=cps19_interest_elxn_1))+
   geom_histogram(bins = 20)+
@@ -80,8 +77,7 @@ labs(x="interest level",
        title="Distribution of interest level in 2019 CES(Gragh 1)",
        caption="Source:http://www.ces-eec.ca")
 ```
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
 ces2019_web %>%
   ggplot(aes(x=cps19_education,y=cps19_interest_elxn_1))+
   geom_boxplot()+
@@ -93,8 +89,7 @@ labs(x="Education level",
 On the X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is same as the order in additional table stated below.
 
 Additional Table
-```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
 Additional_table<-ces2019_web%>%count(cps19_education)
 ```
 
