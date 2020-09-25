@@ -32,7 +32,7 @@ This report is mainly surrounding two variables. Firstly,The variable, CPS19_INT
 The first part of my report is Data section. At the beginning, it remarks the source and description of my dataset.Then,it talks about the basic information and summary statistics of my interesting variables. The Graph sector includes two graphs simulated based on the chosen variables. Then,the Discussion sector describes my findings from the graphs,features of variables and the implications of the study.Furthermore,the weaknesses associated with my data and the ideas to overcome them are specified in the sectors "Weaknesses" and "Next steps", respectively. Finally, the references of the dataset are included in the sector of "References".Our weaknesses involve excess outliers and data insufficiency. Such issues may cause our final conclusion to be inaccurate. To tackle them, I would try to filter out unusual observations and find out more related and useful data.
 
 
-# Data
+# Data& Discussion
 
 The dataset used in this paper is called CES2019-WEB. It is extracted from the 2019 Election Study located within the website (http://www.ces-eec.ca").
 
