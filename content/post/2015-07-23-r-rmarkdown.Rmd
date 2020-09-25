@@ -43,6 +43,7 @@ library(labelled)
 cesR::get_ces("ces2019_web")
 ces2019_web<-to_factor(ces2019_web)
 
+
 ```
 
 
@@ -52,9 +53,10 @@ ces2019_web<-to_factor(ces2019_web)
 
 The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics,I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from"Not interested" to "Very interested"). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.
 
-Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as "Don't know/ Prefer not to answer". After removing these observations, we find that the highest education level completed by the participants ranges from "No Schooling" to "profession/doctorate degree".
+Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as "Don't know/ Prefer not to answer". We ignore these observations in this study, we find that the highest education level completed by the participants ranges from "No Schooling" to "profession/doctorate degree".
 
 Specification: Since the participants are sorted into groups by the highest education level they completed, therefore CPS19_EDUCATION contains 11 groups.
+
 
 
 
@@ -71,8 +73,9 @@ labs(x="interest level",
        caption="Source:http://www.ces-eec.ca")
 ```
 ```{r echo=FALSE,warning=FALSE}
-ces2019_web %>%
-  ggplot(aes(x=cps19_education,y=cps19_interest_elxn_1))+
+
+my_data <- filter(ces2019_web,cps19_education!= "Don't know/ Prefer not to answer")
+my_data %>% ggplot(aes(x=cps19_education,y=cps19_interest_elxn_1))+
   geom_boxplot()+
 labs(x="Education level",
        y="interest level",
@@ -80,7 +83,7 @@ labs(x="Education level",
        caption="Source:http://www.ces-eec.ca")
 ```
 
-Remark: In graph two, the information on X-axis is blurred. Hence, I want to give a specification to make things easier. On X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree"). The specific order is:
+Remark: In graph two, the information on X-axis is blurred. Hence, I want to give a specification to make things easier. On X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree")..The specific order of education level on X-axis is:
 
 1.No schooling	
 2.Some elementary school	
@@ -91,9 +94,7 @@ Remark: In graph two, the information on X-axis is blurred. Hence, I want to giv
 7.Completed technical, community college, CEGEP, College Classique	
 8.Some university	
 9.Bachelor's degree	
-
 10.Master's degree
-
 11.Profession/doctorate degree
 
 
@@ -116,6 +117,7 @@ If we put the two findings above together, we can conclude that the higher educa
 
 
 # Weaknesses:
+
 1. During the progress to find the relationship between education level and interest level towards election, I have found an issue that people who have same education background may have obviously different attitudes towards election.For example, in the group of "No Schooling", the interest level ranges from 2 to 8. This means that some of the people who are not educated care very less about election, while some are very cordial about it. Such situation seems weird and makes it difficult to generate final conclusion for the "No Schooling" group.
 
 2. In addition, only a small fraction of participants have specific education background.For example, participants obtaining the professional/doctorate degree account for less than 1% of total participants. Such situation is not beneficial because insufficient data may cause the conclusion to be not persuasive.

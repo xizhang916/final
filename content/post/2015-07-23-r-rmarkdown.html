@@ -26,7 +26,7 @@ link to Git repo: https://github.com/xizhang916/final.git
 <div id="summary-statistics" class="section level2">
 <h2>Summary Statistics</h2>
 <p>The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics,I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from“Not interested” to “Very interested”). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.</p>
-<p>Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as “Don’t know/ Prefer not to answer”. After removing these observations, we find that the highest education level completed by the participants ranges from “No Schooling” to “profession/doctorate degree”.</p>
+<p>Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as “Don’t know/ Prefer not to answer”. We ignore these observations in this study, we find that the highest education level completed by the participants ranges from “No Schooling” to “profession/doctorate degree”.</p>
 <p>Specification: Since the participants are sorted into groups by the highest education level they completed, therefore CPS19_EDUCATION contains 11 groups.</p>
 </div>
 </div>
@@ -34,7 +34,7 @@ link to Git repo: https://github.com/xizhang916/final.git
 <h1>Graphs</h1>
 <p><img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 <img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Remark: In graph two, the information on X-axis is blurred. Hence, I want to give a specification to make things easier. On X-axis,the education level is increasing from left to right(From “No Schooling” to “professional/doctorate degree”). The specific order is:</p>
+<p>Remark: In graph two, the information on X-axis is blurred. Hence, I want to give a specification to make things easier. On X-axis,the education level is increasing from left to right(From “No Schooling” to “professional/doctorate degree”)..The specific order of education level on X-axis is:</p>
 <p>1.No schooling<br />
 2.Some elementary school<br />
 3.Completed elementary school<br />
@@ -43,9 +43,9 @@ link to Git repo: https://github.com/xizhang916/final.git
 6.Some technical, community college, CEGEP, College Classique<br />
 7.Completed technical, community college, CEGEP, College Classique<br />
 8.Some university<br />
-9.Bachelor’s degree</p>
-<p>10.Master’s degree</p>
-<p>11.Profession/doctorate degree</p>
+9.Bachelor’s degree
+10.Master’s degree
+11.Profession/doctorate degree</p>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
