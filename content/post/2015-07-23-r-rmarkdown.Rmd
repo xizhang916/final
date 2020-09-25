@@ -15,6 +15,9 @@ install.packages("dplyr")
 library(dplyr)
 ```
 
+# Author: Xi Zhang
+The link to my Git repo is: https://github.com/xizhang916/final.git
+
 # Abstract
 The highest education level completed by an individual may affect many things, including how interested he is in the 2019 federal election. In this report, we use the 2019 CES dataset,which was created based on a non-probability survey conducted for 2019 federal election. By manipulating the data, I have found that high level of education is associated with high level of interest in the election. Our findings have implications for understanding the potential audience for the election.
 
