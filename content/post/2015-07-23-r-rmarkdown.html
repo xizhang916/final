@@ -27,17 +27,6 @@ link to Git repo: https://github.com/xizhang916/final.git
 <h1>Data&amp; Discussion</h1>
 <p>The dataset used in this paper is called CES2019-WEB. It is extracted from the 2019 Election Study located within the website (<a href="http://www.ces-eec.ca" class="uri">http://www.ces-eec.ca</a>").</p>
 <p>This dataset records participants’ responses to a non-probability survey conducted for 2019 federal election. This specific survey asks the participants for their personal information (gender,citizenship and education level,etc.), and their attitudes toward the election-related issues(popular parties and the new political policies regarding the election,etc)</p>
-<pre><code>## Installing package into &#39;/home/rstudio-user/R/x86_64-pc-linux-gnu-library/4.0&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## Skipping install of &#39;cesR&#39; from a github remote, the SHA1 (7c780beb) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
-<pre><code>## TO CITE THIS SURVEY FILE:
-## 
-## - Stephenson, Laura B; Harell, Allison; Rubenson, Daniel; Loewen, Peter John, 2020, &#39;2019 Canadian Election Study - Online Survey&#39;, https://doi.org/10.7910/DVN/DUS88V, Harvard Dataverse, V1
-## 
-## - Stephenson, Laura, Allison Harrel, Daniel Rubenson and Peter Loewen. Forthcoming. &#39;Measuring Preferences and Behaviour in the 2019 Canadian Election Study,&#39; Canadian Journal of Political Science.
-## 
-## LINK: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DUS88V</code></pre>
 <pre><code>## # A tibble: 6 x 620
 ##   cps19_StartDate     cps19_EndDate       cps19_ResponseId cps19_consent
 ##   &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;            &lt;fct&gt;        
@@ -96,11 +85,11 @@ link to Git repo: https://github.com/xizhang916/final.git
 ## #   cps19_lead_cares_113 &lt;fct&gt;, cps19_lead_cares_114 &lt;fct&gt;,
 ## #   cps19_lead_cares_115 &lt;fct&gt;, cps19_lead_cares_116 &lt;fct&gt;, …</code></pre>
 <p>Here is the preview of the dataset,ces2019_web.As we can see, the survey asks the participants for their gender, education background, year of birth, and so on.The responses are recorded under different variables.There are 620 variables in total and some of them are numerical while a large fraction are categorical.For example,the cps19_yob records the year of birth and is an discrete numerical variable.While the cps19_gender records the gender of participants and is a categorical variable.</p>
+<div id="summary-statistics" class="section level2">
+<h2>Summary Statistics</h2>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   6.000   8.000   7.087   9.000  10.000</code></pre>
 <pre><code>## [1] 2.475382</code></pre>
-<div id="summary-statistics" class="section level2">
-<h2>Summary Statistics</h2>
 <p>The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics, I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from“Not interested” to “Very interested”). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.</p>
 <p>Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as “Don’t know/ Prefer not to answer”. We ignore these observations in this study and then find that the highest education level completed by the participants ranges from “No Schooling” to “profession/doctorate degree”.</p>
 <p>Specification: Since the participants are sorted into groups by the highest education level they completed, therefore CPS19_EDUCATION contains 11 groups.</p>
@@ -108,8 +97,8 @@ link to Git repo: https://github.com/xizhang916/final.git
 </div>
 <div id="graphs" class="section level1">
 <h1>Graphs</h1>
-<p><img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-<img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Remark: In graph two, the information on X-axis is blurred. Hence, I want to give a specification to make things easier. On X-axis,the education level is increasing from left to right(From “No Schooling” to “professional/doctorate degree”)..The specific order of education level on X-axis is:</p>
 <p>1.No schooling<br />
 2.Some elementary school<br />

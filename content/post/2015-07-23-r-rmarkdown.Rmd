@@ -37,13 +37,16 @@ The dataset used in this paper is called CES2019-WEB. It is extracted from the 2
 
 This dataset records participants' responses to a non-probability survey conducted for 2019 federal election. This specific survey asks the participants for their personal information (gender,citizenship and education level,etc.), and their attitudes toward the election-related issues(popular parties and the new political policies regarding the election,etc)
 
-```{r echo=FALSE}
+```{r include=FALSE}
 install.packages("devtools")
 devtools::install_github("hodgettsp/cesR")
 library(cesR)
 library(labelled)
 cesR::get_ces("ces2019_web")
 ces2019_web<-to_factor(ces2019_web)
+
+```
+```{r echo=FALSE}
 head(ces2019_web)
 
 ```
@@ -51,6 +54,12 @@ head(ces2019_web)
 
 Here is the preview of the dataset,ces2019_web.As we can see, the survey asks the participants for their gender, education background, year of birth, and so on.The responses are recorded under different variables.There are 620 variables in total and some of them are numerical while a large fraction are categorical.For example,the cps19_yob records the year of birth and is an discrete numerical variable.While the cps19_gender records the gender of participants and is a categorical variable.
 
+
+
+
+
+
+## Summary Statistics
 ```{r include=FALSE}
 ces2019_web<- filter(ces2019_web,cps19_interest_elxn_1!="NA")
 ```
@@ -60,10 +69,6 @@ summary(ces2019_web$cps19_interest_elxn_1)
 ```{r echo=FALSE}
 sd(ces2019_web$cps19_interest_elxn_1)
 ```
-
-
-
-## Summary Statistics
 
 The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics, I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from"Not interested" to "Very interested"). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.
 
