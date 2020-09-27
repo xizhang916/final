@@ -8,7 +8,6 @@ link to Git repo: https://github.com/xizhang916/final.git
 ---
 
 ```{r  include=FALSE}
-
 install.packages("tidyverse")
 library(tidyverse)
 install.packages("dplyr")
@@ -38,25 +37,37 @@ The dataset used in this paper is called CES2019-WEB. It is extracted from the 2
 
 This dataset records participants' responses to a non-probability survey conducted for 2019 federal election. This specific survey asks the participants for their personal information (gender,citizenship and education level,etc.), and their attitudes toward the election-related issues(popular parties and the new political policies regarding the election,etc)
 
-```{r include=FALSE}
+```{r echo=FALSE}
 install.packages("devtools")
 devtools::install_github("hodgettsp/cesR")
 library(cesR)
 library(labelled)
 cesR::get_ces("ces2019_web")
 ces2019_web<-to_factor(ces2019_web)
-
+head(ces2019_web)
 
 ```
 
+
+Here is the preview of the dataset,ces2019_web.As we can see, the survey asks the participants for their gender, education background, year of birth, and so on.The responses are recorded under different variables.There are 620 variables in total and some of them are numerical while a large fraction are categorical.For example,the cps19_yob records the year of birth and is an discrete numerical variable.While the cps19_gender records the gender of participants and is a categorical variable.
+
+```{r include=FALSE}
+ces2019_web<- filter(ces2019_web,cps19_interest_elxn_1!="NA")
+```
+```{r echo=FALSE}
+summary(ces2019_web$cps19_interest_elxn_1)
+```
+```{r echo=FALSE}
+sd(ces2019_web$cps19_interest_elxn_1)
+```
 
 
 
 ## Summary Statistics
 
-The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics,I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from"Not interested" to "Very interested"). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.
+The variable, CPS19_INTEREST_ELXN_1, is a discrete numerical variable and records the how interested the participants are in the 2019 federal election. Before identifying the summary statistics, I observe that this variable contains missing values that should be filtered out. After doing so, we find that the interest level of participants ranges from 0 to 10(from"Not interested" to "Very interested"). Besides, the 25th percentile of this variable is 6, the median is 8, and the 75th percentile is 9. Moreover, the mean of the variable is 7.08, which is smaller than the median. This implies that the distribution of the interest level may be left-skewed. Finally,the standard deviation of this variable is 2.475382.
 
-Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as "Don't know/ Prefer not to answer". We ignore these observations in this study, we find that the highest education level completed by the participants ranges from "No Schooling" to "profession/doctorate degree".
+Moreover, CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant. We observe that some participants do not want to tell their education level so they leave their responses as "Don't know/ Prefer not to answer". We ignore these observations in this study and then find that the highest education level completed by the participants ranges from "No Schooling" to "profession/doctorate degree".
 
 Specification: Since the participants are sorted into groups by the highest education level they completed, therefore CPS19_EDUCATION contains 11 groups.
 
@@ -107,7 +118,7 @@ Remark: In graph two, the information on X-axis is blurred. Hence, I want to giv
 
 ## Graph 1 discussion
 
-The graph 1 demonstrates the distribution of scores on "how interested are you in the federal election", given by participants.Its shape is obviously left-skewed. This implies the majority of the participants in the survey give scores higher than 6 when answering the question. The other important thing is that the most of the participants rate their interest level at 8.0, while the least of them rate the interest level at 0.
+The graph 1 demonstrates the distribution of scores on "how interested are you in the federal election", given by participants.Its shape is obviously left-skewed. This implies the majority of the participants in the survey give scores higher than 6 when answering the question.This implies a large fraction of the participants do care about the federal election. The other important thing is that the most of the participants rate their interest level at 8.0, while the least of them rate the interest level at 0.
 
 ## Graph 2 discussion.
 
@@ -121,15 +132,15 @@ If we put the two findings above together, we can conclude that the higher educa
 
 # Weaknesses:
 
-1. During the progress to find the relationship between education level and interest level towards election, I have found an issue that people who have same education background may have obviously different attitudes towards election.For example, in the group of "No Schooling", the interest level ranges from 2 to 8. This means that some of the people who are not educated care very less about election, while some are very cordial about it. Such situation seems weird and makes it difficult to generate final conclusion for the "No Schooling" group.
+1. During the progress to find the relationship between education level and interest level towards election, I have found an issue that our data is associated with large amount of outliers.In the graph 2(boxplot),we see that the interest levels of the groups with bachelor's degree,Master's degree and professional/doctorate degree entail obvious outliers.These unusual data would affect the statistical results and lead to an inaccurate final conclusion.
 
-2. In addition, only a small fraction of participants have specific education background.For example, participants obtaining the professional/doctorate degree account for less than 1% of total participants. Such situation is not beneficial because insufficient data may cause the conclusion to be not persuasive.
+2. In addition, only a small fraction of participants have specific education background.For example, participants obtaining the professional/doctorate degree account for less than 1% of total participants.And "No Schooling" group has the same problem.Such situation is not beneficial because insufficient data may increase the margin of error and cause the conclusion to be not persuasive.
 
 # Next steps:
 
-In order to reduce the impacts on the conclusion caused by weaknesses, I will make some amendments in the future work.Firstly, I will filter out the participants who give very low mark or very high mark when answering "how are you interested in the federal election?".This change can effectively reduce the outliers in our data;therefore, the data distribution will not be affected and we can give an accurate conclusion.
+1.In order to reduce the impacts on the conclusion caused by weaknesses, I will make some amendments in the future work.Firstly, I will filter out the participants who give very low mark or very high mark when answering "how are you interested in the federal election?".This change can effectively reduce the outliers in our data;therefore, the data distribution will not be affected and we can give an accurate conclusion.
 
-To solve the second issue, I will try to look for more information regarding the people with specific education background(ex.doctoral degree)and add them to the current dataset.On the other hand, removing the small groups seems easier, but it may reduce the diversity of the data.
+2.To solve the second issue, I will try to look for more information regarding the people with specific education background(ex.doctoral degree)and add them to the current dataset.On the other hand, removing the small groups seems easier, but it may reduce the diversity of the data.
 
 
 # References
